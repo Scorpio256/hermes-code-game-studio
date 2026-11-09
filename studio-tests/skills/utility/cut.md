@@ -48,7 +48,7 @@ None. `/cut` proposes; the person picks. No gate is invoked.
 
 Every case's `project.yaml` sets `modes.rigor: minimal` and
 `modes.automation: collaborative`, with no `project.local.yaml`, unless its own
-Fixture says otherwise. Rules: `studio-tests/CLAUDE.md` § Fixture defaults.
+Fixture says otherwise. Rules: `studio-tests/AGENTS.md` § Fixture defaults.
 
 ---
 
@@ -128,7 +128,7 @@ it on Steam"
 **Input:** `/cut`, then "actually I want to sell it"
 
 **Expected behavior:**
-1. Runs `bash .claude/scripts/config-set.sh project.goal sell`
+1. Runs `bash .hermes/scripts/config-set.sh project.goal sell`
 2. Asks the dates at once
 
 **Assertions:**

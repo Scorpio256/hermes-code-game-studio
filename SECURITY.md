@@ -11,7 +11,7 @@ older releases are not supported.
 
 Use GitHub's private vulnerability reporting instead:
 
-**[Report a vulnerability →](https://github.com/Donchitos/Claude-Code-Game-Studios/security/advisories/new)**
+**[Report a vulnerability →](https://github.com/Scorpio256/hermes-code-game-studio/security/advisories/new)**
 
 Include as much detail as possible:
 - Description of the vulnerability and what it affects
@@ -31,7 +31,7 @@ AI agents that run directly on your machine. Security issues are primarily about
 contributed code that executes in users' environments without their awareness.
 
 ### High Severity
-- Hooks (`.claude/hooks/*.sh`) that execute malicious or undisclosed shell
+- Hooks (`.hermes/hooks/*.sh`) that execute malicious or undisclosed shell
   commands on user machines
 - Skills or agents that exfiltrate environment variables, API keys, or secrets
 - Prompt injection via skill or agent definitions that causes Claude to bypass

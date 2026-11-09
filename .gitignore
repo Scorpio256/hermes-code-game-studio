@@ -10,7 +10,9 @@ Thumbs.db
 Desktop.ini
 
 # === Claude Code Local ===
+.hermes/settings.local.json
 .claude/settings.local.json
+AGENTS.local.md
 CLAUDE.local.md
 project.local.yaml
 production/session-logs/
@@ -18,10 +20,12 @@ production/session-logs/
 production/session-state/
 .scratch/
 # Per-agent working memory written at runtime — not release material
+.hermes/agent-memory/
 .claude/agent-memory/
 # Worktrees from the prototyper, isolated subagents and `claude --worktree`.
 # Each is a separate checkout; staging everything would add it as an embedded
 # repository.
+.hermes/worktrees/
 .claude/worktrees/
 
 

@@ -46,7 +46,7 @@ The overview below is the `standard`/`full` pipeline.
 PHASE 1: CONCEPT
   /start ──────────────────────────────────────────────────────► routes to A/B/C/D
   /brainstorm ──────────────────────────────────────────────────► design/gdd/game-concept.md
-  /setup-engine ────────────────────────────────────────────────► project.yaml + CLAUDE.md
+  /setup-engine ────────────────────────────────────────────────► project.yaml + AGENTS.md
   /prototype [core-mechanic] ───────────────────────────────────► prototypes/[name]-concept/REPORT.md
         │ PROCEED                                                  (validate idea BEFORE writing GDDs)
         ▼

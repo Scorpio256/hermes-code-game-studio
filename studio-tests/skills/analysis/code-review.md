@@ -44,7 +44,7 @@ helper (Phase 7) is a reviewer, not a gate.
 
 Every case's `project.yaml` sets `modes.rigor: minimal` and
 `modes.automation: collaborative`, with no `project.local.yaml`, unless its own
-Fixture says otherwise. Rules: `studio-tests/CLAUDE.md` §
+Fixture says otherwise. Rules: `studio-tests/AGENTS.md` §
 Fixture defaults.
 
 ---
@@ -172,7 +172,7 @@ Fixture defaults.
 ### Case 5: No Engine Configured — Skipped specialists announce themselves; no gate
 
 **Fixture:**
-- `project.yaml` has `modes.review_mode: full` and no `engine.name`; `.claude/docs/technical-preferences.md` reads `[TO BE CONFIGURED]`
+- `project.yaml` has `modes.review_mode: full` and no `engine.name`; `.hermes/docs/technical-preferences.md` reads `[TO BE CONFIGURED]`
 - `src/gameplay/loot_system.gd` hardcodes a drop rate `0.05` at line 31; everything else meets the standards
 
 **Input:** `/code-review src/gameplay/loot_system.gd`
@@ -199,7 +199,7 @@ Fixture defaults.
 ### Case 5b: No Engine Configured, Clean File — NOT ASSESSED, never APPROVED
 
 **Fixture:**
-- `project.yaml` has no `engine.name`; `.claude/docs/technical-preferences.md` reads `[TO BE CONFIGURED]`
+- `project.yaml` has no `engine.name`; `.hermes/docs/technical-preferences.md` reads `[TO BE CONFIGURED]`
 - `src/gameplay/loot_table.gd` meets all six Phase 4 checks and raises no architecture, SOLID or game-specific concern
 
 **Input:** `/code-review src/gameplay/loot_table.gd`

@@ -1,7 +1,7 @@
 <p align="center">
-  <h1 align="center">Claude Code Game Studios</h1>
+  <h1 align="center">Hermes Code Game Studios</h1>
   <p align="center">
-    Describe a game. Claude Code asks a few questions, writes a one-page brief,
+    Describe a game. Hermes Agent asks a few questions, writes a one-page brief,
     and builds a playable browser game from it.
     <br />
     Then you change it, grow it and finish it, one step at a time.
@@ -10,16 +10,14 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
-  <a href="https://code.claude.com/docs"><img src="https://img.shields.io/badge/built%20for-Claude%20Code-f5f5f5?logo=anthropic" alt="Built for Claude Code"></a>
-  <a href="https://www.buymeacoffee.com/donchitos3"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support%20this%20project-FFDD00?logo=buymeacoffee&logoColor=black" alt="Buy Me a Coffee"></a>
-  <a href="https://github.com/sponsors/Donchitos"><img src="https://img.shields.io/badge/GitHub%20Sponsors-Support%20this%20project-ea4aaa?logo=githubsponsors&logoColor=white" alt="GitHub Sponsors"></a>
+  <a href="https://hermes-agent.nousresearch.com"><img src="https://img.shields.io/badge/built%20for-Hermes%20Agent-8A2BE2" alt="Built for Hermes Agent"></a>
 </p>
 
 ---
 
 ## Make me a game
 
-Open Claude Code in a copy of this repository and say what you want:
+Open Hermes Agent in a copy of this repository and say what you want:
 
 ```
 /prototype a fishing game where the rare fish only bite at dusk
@@ -106,7 +104,7 @@ clutter, not evidence.
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
-- [Claude Code](https://code.claude.com/docs/en/setup) — the native installer is recommended (`npm install -g @anthropic-ai/claude-code` also works, on Node.js 22+)
+- [Hermes Agent](https://hermes-agent.nousresearch.com)
 - [Python 3](https://www.python.org/) — reads `project.yaml` for every skill and hook; without it every setting silently falls back to its default
 - Bash — runs every hook; built into macOS and Linux, and on Windows it comes with [Git for Windows](https://git-scm.com/downloads/win). Without it on Windows the hooks skip themselves, and session start says their checks are off
 - **Chrome, Edge or Chromium** — `/prototype` plays and screenshots each game in it; without one, those checks say they were not assessed
@@ -118,14 +116,14 @@ Hooks fail gracefully if optional tools are missing — you just lose validation
 
 1. **Clone or use as template**:
    ```bash
-   git clone https://github.com/Donchitos/Claude-Code-Game-Studios.git my-game
+   git clone https://github.com/Scorpio256/hermes-code-game-studio.git my-game
    cd my-game
    ```
 
-2. **Open Claude Code in the project's root folder** (the one holding
-   `CLAUDE.md` and `project.yaml`) and start a session:
+2. **Open Hermes Agent in the project's root folder** (the one holding
+   `AGENTS.md` and `project.yaml`) and start a session:
    ```bash
-   claude
+   hermes
    ```
    Starting it in a subfolder such as `src/` skips the project's hooks, deny
    rules and ask-first permission mode.
@@ -153,7 +151,7 @@ Hooks fail gracefully if optional tools are missing — you just lose validation
 (`docs/engine-reference/<engine>/`). With no engine set, `/prototype` builds
 in the browser first; you pick an engine after you have played the game. Each
 engine's folders and default commands come from one table,
-`.claude/engines/engines.tsv`. If your code or tests live somewhere else, set
+`.hermes/engines/engines.tsv`. If your code or tests live somewhere else, set
 `engine.code_root` or `engine.test_root` in `project.yaml`.
 
 ## Configuration
@@ -203,7 +201,7 @@ View or change any setting with the `/project-settings` skill:
 /project-settings --local modes.review_mode=solo   # write to project.local.yaml (just you)
 ```
 
-Full schema and per-setting behavior: `.claude/docs/effects-map.md`.
+Full schema and per-setting behavior: `.hermes/docs/effects-map.md`.
 
 ## Upgrading
 
@@ -214,9 +212,9 @@ versions, and which files are safe to overwrite vs. which need a manual merge.
 ## Project Structure
 
 ```
-CLAUDE.md                           # Master configuration
+AGENTS.md                           # Master configuration
 project.yaml                        # Project settings: engine, modes, goal
-.claude/
+.hermes/
   settings.json                     # Hooks, permissions, safety rules
   agents/                           # 49 agent definitions (markdown + YAML frontmatter)
   skills/                           # 75 skills, plus three old names (a subdirectory each)
@@ -283,7 +281,7 @@ It tests the *framework*, never your game — game tests live in `tests/`.
 | `log-agent.sh` | Agent spawned | Audit trail start — logs subagent invocation |
 | `log-agent-stop.sh` | Agent stops | Audit trail stop — completes subagent record |
 | `validate-agent-artifact.sh` | Agent stops | Warns when a subagent stops without writing the file its brief named |
-| `validate-skill-change.sh` | PostToolUse (Write/Edit) | Advises running `/skill-test` after any `.claude/skills/` change |
+| `validate-skill-change.sh` | PostToolUse (Write/Edit) | Advises running `/skill-test` after any `.hermes/skills/` change |
 
 > **Note**: `validate-commit.sh`, `validate-push.sh`, `validate-read.sh`, `validate-write.sh`, `validate-registry.sh`, `validate-assets.sh` and `validate-skill-change.sh` fire on every Bash, PowerShell, Read, Write or Edit tool call and exit immediately (exit 0) when the command or file path is not relevant. This is normal hook behavior — not a performance concern.
 
@@ -466,7 +464,7 @@ You stay in control. The agents provide structure and expertise, not autonomy.
 That is how a terminal session started at the project root behaves out of the
 box. The `guided` and `autonomous` automation settings, and Claude Code's own
 auto mode, trade some of these prompts for speed; see
-[setup-requirements.md](.claude/docs/setup-requirements.md) for the routes into
+[setup-requirements.md](.hermes/docs/setup-requirements.md) for the routes into
 auto mode.
 
 ## Design Philosophy
@@ -498,8 +496,8 @@ Primary development on **Windows 10** with Git Bash. The hooks and scripts are a
 
 ## Community
 
-- **Discussions** — [GitHub Discussions](https://github.com/Donchitos/Claude-Code-Game-Studios/discussions) for questions, ideas, and showcasing what you've built
-- **Issues** — [Bug reports and feature requests](https://github.com/Donchitos/Claude-Code-Game-Studios/issues)
+- **Discussions** — [GitHub Discussions](https://github.com/Scorpio256/hermes-code-game-studio/discussions) for questions, ideas, and showcasing what you've built
+- **Issues** — [Bug reports and feature requests](https://github.com/Scorpio256/hermes-code-game-studio/issues)
 
 ---
 
@@ -520,7 +518,7 @@ Sponsorships help fund time spent maintaining skills, adding new agents, keeping
 
 ---
 
-*Built for Claude Code. Maintained and extended — contributions welcome via [GitHub Discussions](https://github.com/Donchitos/Claude-Code-Game-Studios/discussions).*
+*Built for Claude Code. Maintained and extended — contributions welcome via [GitHub Discussions](https://github.com/Scorpio256/hermes-code-game-studio/discussions).*
 
 ## License
 

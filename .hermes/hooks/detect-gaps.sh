@@ -131,7 +131,7 @@ fi
 if [ "$FRESH_PROJECT" = true ]; then
   echo ""
   echo "🚀 NEW PROJECT: No engine configured, no game concept, no source code."
-  echo "   This looks like a fresh start! Run: /start"
+  echo "   This looks like a fresh start! Run: /studio-start (or /skill start)"
   echo ""
   echo "💡 To get a comprehensive project analysis, run: /project-stage-detect"
   echo "==================================="

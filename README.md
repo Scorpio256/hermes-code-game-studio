@@ -163,14 +163,14 @@ engine's folders and default commands come from one table,
 
 `project.yaml` at the repo root is the single source of truth for how the
 studio behaves on your project — engine, naming conventions, and a `modes`
-block that controls how much process every skill enforces. `/start` writes it
+block that controls how much process every skill enforces. `/studio-start` writes it
 for you; you rarely need to hand-edit it.
 
 The one question that matters most is **`modes.rigor`** — `minimal`, `standard`,
 or `full`. It's a single front door over six separate knobs (`workflow` —
 which GDD sections are required, `docs.density`, `qa.level`,
 `story_granularity`, `review_mode` — how many director agents review your work,
-and `team.size`), so `/start` asks it once instead of six times:
+and `team.size`), so `/studio-start` asks it once instead of six times:
 
 - **`minimal`** (default) — the light path. No GDDs required, terse docs, minimal QA evidence, solo review. `/prototype` (questions, a brief, a first build) → play and change it → grow it on PROCEED → one feature a sitting: name it, and it is built, checked and committed. Stories (`/create-stories` → `/dev-story` ↔ `/story-done`) only when you ask.
 - **`standard`** — 5 required GDD sections, balanced doc depth, standard QA evidence, lean review.
@@ -195,7 +195,7 @@ per-developer in a gitignored `project.local.yaml` without touching the shared
 config. `modes.automation` (how often the AI pauses to ask before it acts) sits
 outside rigor and is likewise personally overridable. `project.goal` (a jam
 game, a hobby, a game to sell, and so on) is what you want from the game;
-`/start` guesses it, and `/cut` reads it.
+`/studio-start` guesses it, and `/cut` reads it.
 
 View or change any setting with the `/project-settings` skill:
 
@@ -222,7 +222,7 @@ project.yaml                        # Project settings: engine, modes, goal
 .hermes/
   settings.json                     # Hooks, permissions, safety rules
   agents/                           # 49 agent definitions (markdown + YAML frontmatter)
-  skills/                           # 75 skills, plus three old names (a subdirectory each)
+  skills/                           # 78 skills (a subdirectory each)
   hooks/                            # 18 scripts (bash) — 15 event hooks, two helpers they
                                     #   source (yaml-helper.sh, update-check.sh), and one
                                     #   opt-in diagnostic you wire yourself
@@ -251,9 +251,9 @@ studio-tests/                       # QA for the skills and agents themselves �
 
 ### Testing your customizations
 
-Claude Code Game Studios is a template you are meant to edit. `studio-tests/` is how
+Hermes Code Game Studios is a template you are meant to edit. `studio-tests/` is how
 you check that an edited or newly written skill still holds up — a catalog of all
-75 skills and 49 agents, per-category quality rubrics, behavioral specs, and
+78 skills and 49 agents, per-category quality rubrics, behavioral specs, and
 templates for writing specs of your own.
 
 ```
@@ -279,8 +279,8 @@ It tests the *framework*, never your game — game tests live in `tests/`.
 | `validate-registry.sh` | PreToolUse (Write/Edit) | Warns when a write to the entity or TR-ID registry would delete or renumber an entry, or set a status its header does not list |
 | `validate-assets.sh` | PostToolUse (Write/Edit) | Checks data-file JSON under `assets/`, `Assets/` or `Content/`, and asset naming in Godot's `assets/` only — exits early if the file is under none of them |
 | `session-start.sh` | Session open | Shows current branch and recent commits for orientation |
-| `detect-gaps.sh` | Session open | Detects fresh projects (suggests `/start`) and missing design docs when code or prototypes exist |
-| `pre-compact.sh` | Before compaction | Logs the compaction (its output does not reach Claude — `session-start.sh` restores context afterwards) |
+| `detect-gaps.sh` | Session open | Detects fresh projects (suggests `/studio-start`) and missing design docs when code or prototypes exist |
+| `pre-compact.sh` | Before compaction | Logs the compaction (its output does not reach Hermes — `session-start.sh` restores context afterwards) |
 | `notify.sh` | Permission prompt, or idle about a minute | Shows Windows toast notification via PowerShell |
 | `session-stop.sh` | Every response end, in the background | Archives `active.md` to session log and records git activity |
 | `log-agent.sh` | Agent spawned | Audit trail start — logs subagent invocation |
@@ -290,7 +290,7 @@ It tests the *framework*, never your game — game tests live in `tests/`.
 
 > **Note**: `validate-commit.sh`, `validate-push.sh`, `validate-read.sh`, `validate-write.sh`, `validate-registry.sh`, `validate-assets.sh` and `validate-skill-change.sh` fire on every Bash, PowerShell, Read, Write or Edit tool call and exit immediately (exit 0) when the command or file path is not relevant. This is normal hook behavior — not a performance concern.
 
-**Permission rules** in `settings.json` auto-allow test runs and the framework's read-only helper scripts, and block dangerous operations (force push, `rm -rf`, reading `.env` files) in both the Bash and PowerShell tools. Read-only commands such as `git status`, `git log` and `ls` need no rule: Claude Code runs them without asking. The `git` rules match anywhere after `git`, so a git command whose text only mentions `push` followed later by ` +` or ` -f`, `clean` followed by ` -f`, or `reset` followed by `--hard` — a commit message such as `git commit -m "push + pull"` included — is denied too: reword the message.
+**Permission rules** in `settings.json` auto-allow test runs and the framework's read-only helper scripts, and block dangerous operations (force push, `rm -rf`, reading `.env` files) in both the Bash and PowerShell tools. Read-only commands such as `git status`, `git log` and `ls` need no rule: Hermes Agent runs them without asking. The `git` rules match anywhere after `git`, so a git command whose text only mentions `push` followed later by ` +` or ` -f`, `clean` followed by ` -f`, or `reset` followed by `--hard` — a commit message such as `git commit -m "push + pull"` included — is denied too: reword the message.
 
 ### Path-Scoped Rules
 
@@ -331,7 +331,7 @@ nine stories or features).
 | Category | Count | Description |
 |----------|-------|-------------|
 | **Agents** | 49 | Specialized subagents across design, programming, art, audio, narrative, QA, and production |
-| **Skills** | 75 | Slash commands for every workflow phase (`/prototype`, `/start`, `/design-system`, `/create-epics`, `/create-stories`, `/dev-story`, `/story-done`, etc.) |
+| **Skills** | 78 | Slash commands for every workflow phase (`/prototype`, `/studio-start`, `/design-system`, `/create-epics`, `/create-stories`, `/dev-story`, `/story-done`, etc.) |
 | **Hooks** | 15 | Automated validation on commits, pushes, asset changes, design-doc reads, writes and registries, session lifecycle, agent audit trail, and gap detection |
 | **Rules** | 14 | Path-scoped coding standards enforced when editing gameplay, engine, AI, UI, network code, scene and asset files, and more |
 | **Templates** | 62 | Document templates for GDDs, UX specs, ADRs, sprint plans, HUD design, accessibility, and more |
@@ -378,13 +378,14 @@ matches your project (a web project uses the general programmers):
 
 ### Slash Commands
 
-Type `/` in Claude Code to access all 75 skills (plus three old names that point to their new ones):
+Type `/` in Hermes Agent to access the studio skills (or invoke via `/skill <name>`):
 
 **Make a Game**
 `/prototype` `/cut`
 
 **Onboarding & Navigation**
-`/studio-start` `/start` `/next-step` `/project-stage-detect` `/setup-engine` `/adopt` `/project-settings`
+`/studio-start` `/next-step` `/project-stage-detect` `/setup-engine` `/adopt` `/project-settings`
+*(Note: `/skill start` can also be used for onboarding).*
 
 **Game Design**
 `/brainstorm` `/map-systems` `/design-system` `/quick-design` `/review-all-gdds` `/propagate-design-change`
@@ -467,7 +468,7 @@ This is **not** an auto-pilot system. Every agent follows a strict collaboration
 You stay in control. The agents provide structure and expertise, not autonomy.
 
 That is how a terminal session started at the project root behaves out of the
-box. The `guided` and `autonomous` automation settings, and Claude Code's own
+box. The `guided` and `autonomous` automation settings, and Hermes Agent's own
 auto mode, trade some of these prompts for speed; see
 [setup-requirements.md](.hermes/docs/setup-requirements.md) for the routes into
 auto mode.
@@ -508,7 +509,7 @@ Primary development on **Windows 10** with Git Bash. The hooks and scripts are a
 
 ## Supporting This Project
 
-Claude Code Game Studios is free and open source. If it saves you time or helps you ship your game, consider supporting continued development:
+Hermes Code Game Studios is free and open source. If it saves you time or helps you ship your game, consider supporting continued development:
 
 <p>
   <a href="https://www.buymeacoffee.com/donchitos3"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee"></a>
@@ -519,11 +520,11 @@ Claude Code Game Studios is free and open source. If it saves you time or helps 
 - **[Buy Me a Coffee](https://www.buymeacoffee.com/donchitos3)** — one-time support
 - **[GitHub Sponsors](https://github.com/sponsors/Donchitos)** — recurring support through GitHub
 
-Sponsorships help fund time spent maintaining skills, adding new agents, keeping up with Claude Code and engine API changes, and responding to community issues.
+Sponsorships help fund time spent maintaining skills, adding new agents, keeping up with Hermes Agent and engine API changes, and responding to community issues.
 
 ---
 
-*Built for Claude Code. Maintained and extended — contributions welcome via [GitHub Discussions](https://github.com/Scorpio256/hermes-code-game-studio/discussions).*
+*Built for Hermes Agent. Maintained and extended — contributions welcome via [GitHub Discussions](https://github.com/Scorpio256/hermes-code-game-studio/discussions).*
 
 ## License
 

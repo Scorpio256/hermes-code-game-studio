@@ -488,7 +488,7 @@ _yaml_helper_set_root() {
 validate_local_yaml_base() {
   _yaml_helper_set_root
   if [ -f "$_YH_ROOT/project.local.yaml" ] && [ ! -f "$_YH_ROOT/project.yaml" ]; then
-    echo "project.local.yaml exists but project.yaml is missing — run /start to create one. Local overrides require a base." >&2
+    echo "project.local.yaml exists but project.yaml is missing — run /studio-start to create one. Local overrides require a base." >&2
     return 1
   fi
   return 0

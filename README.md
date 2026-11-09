@@ -135,7 +135,7 @@ Hooks fail gracefully if optional tools are missing — you just lose validation
    Starting it in a subfolder such as `src/` skips the project's hooks, deny
    rules and ask-first permission mode.
 
-4. **Run `/start`** to begin the guided onboarding flow (or type `/prototype` and your idea to build immediately).
+4. **Run `/studio-start`** (or `/skill start`) to begin the guided onboarding flow (or type `/prototype` and your idea to build immediately).
 
    Other ways in:
    - `/next-step` — names the one next step wherever you are
@@ -384,7 +384,7 @@ Type `/` in Claude Code to access all 75 skills (plus three old names that point
 `/prototype` `/cut`
 
 **Onboarding & Navigation**
-`/start` `/next-step` `/project-stage-detect` `/setup-engine` `/adopt` `/project-settings`
+`/studio-start` `/start` `/next-step` `/project-stage-detect` `/setup-engine` `/adopt` `/project-settings`
 
 **Game Design**
 `/brainstorm` `/map-systems` `/design-system` `/quick-design` `/review-all-gdds` `/propagate-design-change`

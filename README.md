@@ -120,7 +120,14 @@ Hooks fail gracefully if optional tools are missing — you just lose validation
    cd my-game
    ```
 
-2. **Open Hermes Agent in the project's root folder** (the one holding
+2. **Trust project skills**:
+   Because Hermes Agent isolates repository skills for security, trust the project once so its 78 skills load:
+   ```bash
+   hermes skills trust
+   ```
+   *(Or type `/skills trust` inside an active Hermes chat).*
+
+3. **Open Hermes Agent in the project's root folder** (the one holding
    `AGENTS.md` and `project.yaml`) and start a session:
    ```bash
    hermes
@@ -128,9 +135,7 @@ Hooks fail gracefully if optional tools are missing — you just lose validation
    Starting it in a subfolder such as `src/` skips the project's hooks, deny
    rules and ask-first permission mode.
 
-3. **Type `/prototype` and your idea**, or **run `/start`**, which asks where
-   you are (make me a game, an idea or none yet, clear design, existing work)
-   and guides you to the right workflow. No assumptions.
+4. **Run `/start`** to begin the guided onboarding flow (or type `/prototype` and your idea to build immediately).
 
    Other ways in:
    - `/next-step` — names the one next step wherever you are

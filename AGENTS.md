@@ -60,8 +60,7 @@ Every task follows: **Question -> Options -> Decision -> Draft -> Approval**
 
 See `docs/COLLABORATIVE-DESIGN-PRINCIPLE.md` for full protocol and examples.
 
-> **First session?** Say "make me a game" (`/prototype`), or run `/start` to begin
-> the guided onboarding flow.
+> **First session?** If project skills aren't active yet, run `/skills trust` (or `hermes skills trust` in terminal) to load all 78 studio skills. Then run `/start` to begin the guided onboarding flow or say "make me a game" (`/prototype`).
 
 ## Coding Standards
 

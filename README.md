@@ -138,6 +138,7 @@ Hooks fail gracefully if optional tools are missing — you just lose validation
 4. **Run `/studio-start`** (or `/skill start`) to begin the guided onboarding flow (or type `/prototype` and your idea to build immediately).
 
    Other ways in:
+   - `/continue` — resume active work from `production/session-state/active.md` across context resets or crashes
    - `/next-step` — names the one next step wherever you are
    - `/brainstorm` — explore game ideas from scratch
    - `/setup-engine godot 4.7` — configure an engine if you already know you want one
@@ -331,7 +332,7 @@ nine stories or features).
 | Category | Count | Description |
 |----------|-------|-------------|
 | **Agents** | 49 | Specialized subagents across design, programming, art, audio, narrative, QA, and production |
-| **Skills** | 78 | Slash commands for every workflow phase (`/prototype`, `/studio-start`, `/design-system`, `/create-epics`, `/create-stories`, `/dev-story`, `/story-done`, etc.) |
+| **Skills** | 79 | Slash commands for every workflow phase (`/prototype`, `/studio-start`, `/continue`, `/design-system`, `/create-epics`, `/create-stories`, `/dev-story`, `/story-done`, etc.) |
 | **Hooks** | 15 | Automated validation on commits, pushes, asset changes, design-doc reads, writes and registries, session lifecycle, agent audit trail, and gap detection |
 | **Rules** | 14 | Path-scoped coding standards enforced when editing gameplay, engine, AI, UI, network code, scene and asset files, and more |
 | **Templates** | 62 | Document templates for GDDs, UX specs, ADRs, sprint plans, HUD design, accessibility, and more |
@@ -384,7 +385,7 @@ Type `/` in Hermes Agent to access the studio skills (or invoke via `/skill <nam
 `/prototype` `/cut`
 
 **Onboarding & Navigation**
-`/studio-start` `/next-step` `/project-stage-detect` `/setup-engine` `/adopt` `/project-settings`
+`/studio-start` `/continue` `/next-step` `/project-stage-detect` `/setup-engine` `/adopt` `/project-settings`
 *(Note: `/skill start` can also be used for onboarding).*
 
 **Game Design**

@@ -60,7 +60,7 @@ Every task follows: **Question -> Options -> Decision -> Draft -> Approval**
 
 See `docs/COLLABORATIVE-DESIGN-PRINCIPLE.md` for full protocol and examples.
 
-> **First session?** If project skills aren't active yet, run `/skills trust` (or `hermes skills trust` in terminal) to load all 78 studio skills. Then run `/studio-start` (or `/skill start`) to begin the guided onboarding flow or say "make me a game" (`/prototype`).
+> **First session?** If project skills aren't active yet, run `/skills trust` (or `hermes skills trust` in terminal) to load all 78 studio skills. Then run `/studio-start` (or `/skill start`) to begin the guided onboarding flow, say "make me a game" (`/prototype`), or run `/continue` if resuming work from an active checkpoint.
 
 ## Coding Standards
 
@@ -75,6 +75,11 @@ elsewhere in the repo, so they are restated here rather than lost:
 - **`production/session-state/active.md` is the session checkpoint.** The file is
   the memory, not the conversation. Read it first after any compaction, crash, or
   `/clear`.
+- **All work is checkpointed in `active.md`** — checkbox TODOs, a CHECK section,
+  and a Progress log; update it live after every meaningful milestone so a
+  crashed session loses nothing. The `continue` skill resumes the next unchecked
+  item and ends with "all done" when nothing remains. New jobs are started with
+  `continue <task>` or by writing the checkpoint before the work begins.
 - **Helpers in `.hermes/scripts/` emit observations, never verdicts.** A script
   that scores or judges will eventually contradict a mode or override it cannot
   see. (Cited by `artifact-check.sh` and `adr-dep-graph.sh`.)

@@ -296,7 +296,7 @@ if [ -f "$STATE_FILE" ] && { ! command -v session_state_enabled >/dev/null 2>&1 
     echo ""
     echo "=== ACTIVE SESSION STATE DETECTED ==="
     echo "A previous session left state at: $STATE_FILE"
-    echo "Read this file to recover context and continue where you left off."
+    echo "Run /continue (or read this file) to recover context and continue where you left off."
     echo ""
     # The CHECKPOINT region, as the schema in
     # .hermes/docs/templates/session-state.md defines it.
